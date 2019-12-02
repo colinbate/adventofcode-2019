@@ -11,3 +11,4 @@ This also means my other side projects will suffer, but they suffer anyway. :)
 I'll try to list the languages used here, probably a mixture of JavaScript, C and Python, but maybe others.
 
 * Day 1: JavaScript
+* Day 2: JavaScript
