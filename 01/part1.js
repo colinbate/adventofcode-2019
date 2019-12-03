@@ -1,8 +1,7 @@
 const readline = require('readline');
 
 const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
+  input: process.stdin
 });
 
 let total = 0;
@@ -12,5 +11,5 @@ rl.on('line', mass => {
 });
 
 rl.on('close', () => {
-  console.log(`\nTotal: ${total}`);
+  console.log(`Total: ${total}`);
 });

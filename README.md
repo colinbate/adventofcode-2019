@@ -8,7 +8,7 @@ This also means my other side projects will suffer, but they suffer anyway. :)
 
 ## Languages
 
-I'll try to list the languages used here, probably a mixture of JavaScript, C and Python, but maybe others.
+I'll try to list the languages used here, probably a mixture of JavaScript, C and Python, but maybe others. Maybe Go.
 
-* Day 1: JavaScript
+* Day 1: JavaScript / Go
 * Day 2: JavaScript

@@ -1,5 +1,18 @@
 # Day 1: The Tyranny of the Rocket Equation
 
+## Part One
+
+```bash
+$ node part1.js < input.txt
+```
+
+or
+
+```bash
+$ go build -o part1 part1.go
+$ part1 < input.txt
+```
+
 Santa has become stranded at the edge of the Solar System while delivering presents to other planets! To accurately calculate his position in space, safely align his warp drive, and return to Earth in time to save Christmas, he needs you to bring him measurements from fifty stars.
 
 Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
@@ -24,6 +37,17 @@ What is the sum of the fuel requirements for all of the modules on your spacecra
 Your puzzle answer was `3318195`.
 
 ## Part Two
+
+```bash
+$ node part2.js < input.txt
+```
+
+or
+
+```bash
+$ go build -o part2 part2.go
+$ part2 < input.txt
+```
 
 During the second Go / No Go poll, the Elf in charge of the Rocket Equation Double-Checker stops the launch sequence. Apparently, you forgot to include additional fuel for the fuel you just added.
 
