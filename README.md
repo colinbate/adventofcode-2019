@@ -12,3 +12,4 @@ I'll try to list the languages used here, probably a mixture of JavaScript, C an
 
 * Day 1: JavaScript / Go
 * Day 2: JavaScript
+* Day 3: Go
