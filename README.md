@@ -14,3 +14,4 @@ I'll try to list the languages used here, probably a mixture of JavaScript, C an
 * Day 2: JavaScript
 * Day 3: Go
 * Day 4: Go
+* Day 5: Go (Including re-implementing Day 2's solution in Go)
