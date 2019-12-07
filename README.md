@@ -2,7 +2,9 @@
 
 My solutions (or lack thereof) for the Advent of Code 2019.
 
-This year, I'm not going to attempt using different languages for the sake of learning or experimentation. This year I think I'll just try to complete the puzzles if I have time.
+~This year, I'm not going to attempt using different languages for the sake of learning or experimentation. This year I think I'll just try to complete the puzzles if I have time.~
+
+This year, I’m using this as an excuse to learn [Go](https://golang.org). So far I’m definitely enjoying it. 
 
 This also means my other side projects will suffer, but they suffer anyway. :)
 
