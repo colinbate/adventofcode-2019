@@ -20,3 +20,4 @@ I'll try to list the languages used here, probably a mixture of JavaScript, C an
 * Day 6: Go
 * Day 7: Go
 * Day 8: Go
+* Day 9: Go
