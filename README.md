@@ -23,3 +23,4 @@ I'll try to list the languages used here, probably a mixture of JavaScript, C an
 * Day 9: Go
 * Day 10: Go
 * Day 11: Go... I don't see this changing...
+* Day 12: Go
