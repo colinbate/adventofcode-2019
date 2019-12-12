@@ -10,13 +10,6 @@ type axis struct {
 
 type asystem [4]axis
 
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-
 func grav(me int, other int) (dv int) {
 	if me < other {
 		dv = 1
@@ -53,11 +46,32 @@ func lcm(a, b int) int {
 	return (a * b) / gcd(a, b)
 }
 
+func findPeriod(name string, sys asystem, result chan int) {
+	iter := 0
+	orig := sys.copy()
+	for {
+		for mi := 0; mi < 4; mi++ {
+			for i, other := range sys {
+				if mi != i {
+					sys[mi].v += grav(sys[mi].p, other.p)
+				}
+			}
+		}
+		for mi := 0; mi < 4; mi++ {
+			sys[mi].applyVelocity()
+		}
+		iter++
+		if sys == orig {
+			fmt.Println(name, "period", iter)
+			result <- iter
+			break
+		}
+	}
+	return
+}
+
 // Run is the entry point for this solution.
 func Run() {
-	var (
-		iter int
-	)
 	fmt.Println("Part Two")
 	// Input... too lazy to read it in
 	systemX := asystem{
@@ -78,32 +92,11 @@ func Run() {
 		axis{-4, 0},
 		axis{-3, 0},
 	}
-
-	allSystem := []asystem{systemX, systemY, systemZ}
-	orig := []asystem{systemX.copy(), systemY.copy(), systemZ.copy()}
-	periods := [3]int{0, 0, 0}
-	for ai, a := range allSystem {
-		iter = 0
-		for {
-			for mi := 0; mi < 4; mi++ {
-				for i, other := range a {
-					if mi != i {
-						a[mi].v += grav(a[mi].p, other.p)
-					}
-				}
-			}
-			for mi := 0; mi < 4; mi++ {
-				a[mi].applyVelocity()
-			}
-			iter++
-			if a == orig[ai] {
-				fmt.Println(ai, "period", iter)
-				periods[ai] = iter
-				break
-			}
-		}
-	}
-	lcmA := lcm(periods[0], periods[1])
-	lcmB := lcm(lcmA, periods[2])
-	fmt.Println("Total", lcmB)
+	results := make(chan int, 3)
+	go findPeriod("X", systemX, results)
+	go findPeriod("Y", systemY, results)
+	go findPeriod("Z", systemZ, results)
+	lcmA := lcm(<-results, <-results)
+	total := lcm(lcmA, <-results)
+	fmt.Println("Total:", total)
 }

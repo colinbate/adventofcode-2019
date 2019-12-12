@@ -77,20 +77,14 @@ func Run() {
 		moon{"D", 4, -4, -3, 0, 0, 0},
 	}
 	mlen := len(moons)
-	for mi := 0; mi < mlen; mi++ {
-		fmt.Println(moons[mi])
-	}
-	fmt.Println()
 	for iter < 1000 {
 		for mi := 0; mi < mlen; mi++ {
 			moons[mi].applyGravity(moons)
 		}
 		for mi := 0; mi < mlen; mi++ {
 			moons[mi].applyVelocity()
-			fmt.Println(moons[mi])
 		}
 		iter++
-		fmt.Println()
 	}
 	energy = moons.getEnergy()
 	fmt.Println("Total energy:", energy)
