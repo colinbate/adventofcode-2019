@@ -5,7 +5,6 @@ import (
 )
 
 type moon struct {
-	name                string
 	x, y, z, vx, vy, vz int
 }
 
@@ -27,16 +26,6 @@ func grav(me int, other int) (dv int) {
 		dv = 0
 	}
 	return
-}
-
-func (m *moon) applyGravity(moons system) {
-	for _, other := range moons {
-		if other.name != (*m).name {
-			(*m).vx += grav((*m).x, other.x)
-			(*m).vy += grav((*m).y, other.y)
-			(*m).vz += grav((*m).z, other.z)
-		}
-	}
 }
 
 func (m *moon) applyVelocity() {
@@ -61,31 +50,41 @@ func (sys system) getEnergy() (total int) {
 	return
 }
 
+func readMoons() (moons system) {
+	var (
+		x, y, z int
+	)
+	moons = make(system, 0)
+	for {
+		n, _ := fmt.Scanf("<x=%d, y=%d, z=%d>\n", &x, &y, &z)
+		if n < 3 {
+			break
+		}
+		moons = append(moons, moon{x, y, z, 0, 0, 0})
+	}
+	return
+}
+
 // Run is the entry point for this solution.
 func Run() {
-	var (
-		moons  system
-		iter   int
-		energy int
-	)
 	fmt.Println("Part One")
-	// Input, too lazy to read it in
-	moons = system{
-		moon{"A", 14, 9, 14, 0, 0, 0},
-		moon{"B", 9, 11, 6, 0, 0, 0},
-		moon{"C", -6, 14, -4, 0, 0, 0},
-		moon{"D", 4, -4, -3, 0, 0, 0},
-	}
+	moons := readMoons()
 	mlen := len(moons)
-	for iter < 1000 {
+	for iter := 0; iter < 1000; {
 		for mi := 0; mi < mlen; mi++ {
-			moons[mi].applyGravity(moons)
+			for i, other := range moons {
+				if mi != i {
+					moons[mi].vx += grav(moons[mi].x, other.x)
+					moons[mi].vy += grav(moons[mi].y, other.y)
+					moons[mi].vz += grav(moons[mi].z, other.z)
+				}
+			}
 		}
 		for mi := 0; mi < mlen; mi++ {
 			moons[mi].applyVelocity()
 		}
 		iter++
 	}
-	energy = moons.getEnergy()
+	energy := moons.getEnergy()
 	fmt.Println("Total energy:", energy)
 }

@@ -4,7 +4,7 @@
 
 ```bash
 $ go build
-$ 12 --one
+$ 12 --one < input.txt
 ```
 
 The space near Jupiter is not a very safe place; you need to be careful of a big distracting red spot, extreme radiation, and a whole lot of moons swirling around. You decide to start by tracking the four largest moons: Io, Europa, Ganymede, and Callisto.
@@ -205,7 +205,7 @@ Your puzzle answer was `9999`.
 
 ```bash
 $ go build
-$ 12 --two
+$ 12 --two < input.txt
 ```
 
 All this drifting around in space makes you wonder about the nature of the universe. Does history really repeat itself? You're curious whether the moons will ever return to a previous state.

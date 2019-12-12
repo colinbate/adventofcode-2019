@@ -70,28 +70,26 @@ func findPeriod(name string, sys asystem, result chan int) {
 	return
 }
 
+func readMoons() (sysx asystem, sysy asystem, sysz asystem) {
+	var (
+		x, y, z int
+	)
+	for moon := 0; ; moon++ {
+		n, _ := fmt.Scanf("<x=%d, y=%d, z=%d>\n", &x, &y, &z)
+		if n < 3 {
+			break
+		}
+		sysx[moon] = axis{x, 0}
+		sysy[moon] = axis{y, 0}
+		sysz[moon] = axis{z, 0}
+	}
+	return
+}
+
 // Run is the entry point for this solution.
 func Run() {
 	fmt.Println("Part Two")
-	// Input... too lazy to read it in
-	systemX := asystem{
-		axis{14, 0},
-		axis{9, 0},
-		axis{-6, 0},
-		axis{4, 0},
-	}
-	systemY := asystem{
-		axis{9, 0},
-		axis{11, 0},
-		axis{14, 0},
-		axis{-4, 0},
-	}
-	systemZ := asystem{
-		axis{14, 0},
-		axis{6, 0},
-		axis{-4, 0},
-		axis{-3, 0},
-	}
+	systemX, systemY, systemZ := readMoons()
 	results := make(chan int, 3)
 	go findPeriod("X", systemX, results)
 	go findPeriod("Y", systemY, results)
